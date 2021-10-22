@@ -33,11 +33,17 @@ function ESP.new(Parent)
 end
 
 function ESP:Color(Player, Color)
-	for _,v in next, self.Items[Player] do
-		if (v:IsA('TextLabel')) then
-			v.TextColor3 = Color
-		else
-			v.Color3 = Color
+	local success, Items = pcall(function()
+		return self.Items[Player]
+	end)
+
+	if (success) then
+		for _,v in next, Items do
+			if (v:IsA('TextLabel')) then
+				v.TextColor3 = Color
+			else
+				v.Color3 = Color
+			end
 		end
 	end
 end
