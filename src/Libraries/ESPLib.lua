@@ -37,7 +37,7 @@ function ESP:Color(Player, Color)
 		return self.Items[Player]
 	end)
 
-	if (success) then
+	if (success and Items) then
 		for _,v in next, Items do
 			if (v:IsA('TextLabel')) then
 				v.TextColor3 = Color
