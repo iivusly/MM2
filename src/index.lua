@@ -46,4 +46,8 @@ game:GetService('RunService').Heartbeat:Connect(function()
 	LocalPlayerRole = PlayerData[LocalPlayer.Name]
 end)
 
-Loading.CloseEvent:Fire()
+Loading.Spinner:Destroy()
+Loading.TextLabel.Text = '你好～'
+delay(2, function()
+	Loading.CloseEvent:Fire()
+end)
