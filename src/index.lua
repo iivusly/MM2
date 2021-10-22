@@ -55,6 +55,7 @@ game:GetService('RunService').Heartbeat:Connect(function()
 		local err, Data = pcall(function()
 			return PlayerData[v.Name]
 		end)
+		print(err, Data)
 		if (not err and Data) then
 			if (Data.Dead == false) then
 					for k,c in next, RoleColors do
