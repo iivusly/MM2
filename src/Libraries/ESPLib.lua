@@ -3,6 +3,25 @@ ESP.__index = ESP
 
 local Util = require('Util')
 
+local RequiredBodyParts = {
+	'Head',
+	'UpperTorso',
+	'LoawerTorso',
+	'HumanoidRootPart',
+	'LeftFoot',
+	'LeftHand',
+	'LeftLowerArm',
+	'LeftLowerLeg',
+	'LeftUpperArm',
+	'LeftUpperLeg',
+	'RightFoot',
+	'RightHand',
+	'RightLowerArm',
+	'RightLowerLeg',
+	'RightUpperArm',
+	'RightUpperLeg',
+}
+
 function ESP.new(Parent)
 	local self = setmetatable({
 		Holder = Util.QuickBuild('Folder', Parent, {
@@ -31,7 +50,9 @@ function ESP:Build(Player, Color)
 	self.Items[Player] = {}
 	
 	local function Build(Character)
-		wait()
+		for _,v in next, RequiredBodyParts do
+			local Found = Character:WaitForChild(v)
+		end
 		local BGui = Util.QuickBuild('BillboardGui', ESPHolder, {
 			AlwaysOnTop = true,
 			Size = UDim2.new(2, 0, 1, 0),
