@@ -68,6 +68,8 @@ game:GetService('RunService').Heartbeat:Connect(function()
 			if (v == LocalPlayer) then
 				LocalPlayerRole = Data.Role
 			end
+		else
+			ESP:Color(Players[v.Name], RoleColors.Innocent)
 		end
 	end
 end)
