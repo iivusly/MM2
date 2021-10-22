@@ -53,11 +53,10 @@ game:GetService('RunService').Heartbeat:Connect(function()
 	print('looped')
 	PlayerData = CallLib.GetPlayerData()
 	for i,v in next, Players:GetPlayers() do
-		local err, Data = pcall(function()
+		local success, Data = pcall(function()
 			return PlayerData[v.Name]
 		end)
-		print(err, Data)
-		if (not err and Data) then
+		if (success and Data) then
 			if (Data.Dead == false) then
 					for k,c in next, RoleColors do
 					if (Data.Role == k) then
