@@ -22,12 +22,16 @@ local Loading = UILib.Loader.new(UI, '正在加载...', 5, true, true)
 
 local ESP = ESPLib.new(UI)
 
+function Build(Target)
+	ESP:Build(Target, BrickColor.new('Light green (Mint)').Color)
+end
+
 for _,v in next, Players:GetPlayers() do
-	ESP:Build(v, BrickColor.new('Light green (Mint)').Color)
+	Build(v)
 end
 
 Players.PlayerAdded:Connect(function(Player)
-	ESP:Build(Player)
+	Build(Player)
 end)
 
 game:GetService('RunService').Heartbeat:Connect(function()
