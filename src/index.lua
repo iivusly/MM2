@@ -52,19 +52,24 @@ end)
 game:GetService('RunService').Heartbeat:Connect(function()
 	PlayerData = CallLib.GetPlayerData()
 	for i,v in next, Players:GetPlayers() do
-		local Data = PlayerData[v.Name]
-		if (Data and Data.Dead == false) then
-			for k,c in next, RoleColors do
-				if (Data.Role == k) then
-					ESP:Color(Players[v.Name], c)
+		local err, Data = pcall(function()
+			return PlayerData[v.Name]
+		end)
+		if (not err and Data) then
+			if (Data.Dead == false) then
+					for k,c in next, RoleColors do
+					if (Data.Role == k) then
+						ESP:Color(Players[v.Name], c)
+					end
 				end
+			else
+				ESP:Color(Players[v.Name], RoleColors.Innocent)
 			end
-		else
-			ESP:Color(Players[v.Name], RoleColors.Innocent)
+			if (v == LocalPlayer) then
+				LocalPlayerRole = Data.Role
+			end
 		end
 	end
-	
-	LocalPlayerRole = PlayerData[LocalPlayer.Name]
 end)
 
 Loading.Spinner:Destroy()
