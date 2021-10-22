@@ -11,8 +11,11 @@ local UILib = require('Libraries/UILib')
 local CallLib = require('Libraries/CallLib')
 
 local Players = game:GetService('Players')
+local UIS = game:GetService('UserInputService')
 local LocalPlayer = Players.LocalPlayer
 local LocalPlayerRole = 'Innocent'
+
+local PlayerData
 
 local UI = Util.QuickBuild('ScreenGui', gethui(), {
 	Name = game:GetService('HttpService'):GenerateGUID()
@@ -36,8 +39,18 @@ Players.PlayerAdded:Connect(function(Player)
 	Build(Player)
 end)
 
+UIS.InputBegan:Connect(function(Input)
+	if (Input.KeyCode == Enum.KeyCode.E and LocalPlayerRole == 'Sheriff') then
+		for i,v in next, PlayerData do
+			if (v.Role == 'Murderer') then
+				CallLib.Shoot(Players[i].Character.PrimaryPart.Position)
+			end
+		end
+	end
+end)
+
 game:GetService('RunService').Heartbeat:Connect(function()
-	local PlayerData = CallLib.GetPlayerData()
+	PlayerData = CallLib.GetPlayerData()
 	for i,v in next, Players:GetPlayers() do
 		local Data = PlayerData[v.Name]
 		if (Data and Data.Dead == false) then
