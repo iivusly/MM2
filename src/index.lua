@@ -14,7 +14,9 @@ local Players = game:GetService('Players')
 local LocalPlayer = Players.LocalPlayer
 local LocalPlayerRole = 'Innocent'
 
-local UI = script.Parent
+local UI = Util.QuickBuild('ScreenGui', gethui(), {
+	Name = game:GetService('HttpService'):GenerateGUID()
+})
 
 local Loading = UILib.Loader.new(UI, '正在加载...', 5, true, true)
 
