@@ -50,6 +50,7 @@ end)
 
 Loading.Spinner:Destroy()
 Loading.TextLabel.Text = '你好～'
+print('好的')
 delay(2, function()
 	Loading.CloseEvent:Fire()
 end)
