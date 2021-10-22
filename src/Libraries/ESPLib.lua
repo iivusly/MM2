@@ -68,7 +68,7 @@ function ESP:Build(Player, Color)
 			end
 		end
 
-		Character.Humanoid.Died:Connect(function()
+		Character:WaitForChild('Humanoid').Died:Connect(function()
 			for _,v in next, self.Items[Player] do
 				v:Destroy()
 			end
