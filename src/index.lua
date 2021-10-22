@@ -23,7 +23,9 @@ local Loading = UILib.Loader.new(UI, '正在加载...', 5, true, true)
 local ESP = ESPLib.new(UI)
 
 function Build(Target)
-	ESP:Build(Target, BrickColor.new('Light green (Mint)').Color)
+	if (Target ~= LocalPlayer) then
+		ESP:Build(Target, BrickColor.new('Light green (Mint)').Color)
+	end
 end
 
 for _,v in next, Players:GetPlayers() do
