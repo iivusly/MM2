@@ -95,13 +95,21 @@ function ESP:Build(Player, Color)
 			end
 		end
 
-		Character:WaitForChild('Humanoid').Died:Connect(function()
+		local function Died()
 			for _,v in next, self.Items[Player] do
 				v:Destroy()
 			end
 
 			self.Items[Player] = {}
+		end
+
+		Character.Parent.DescendantRemoving:Connect(function(Decsendant)
+			if (Decsendant == Character) then
+				Died()
+			end
 		end)
+
+		Character:WaitForChild('Humanoid').Died:Connect(Died)
 	end
 
 	Player.CharacterAdded:Connect(Build)
