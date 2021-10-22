@@ -50,6 +50,7 @@ UIS.InputBegan:Connect(function(Input)
 end)
 
 game:GetService('RunService').Heartbeat:Connect(function()
+	print('looped')
 	PlayerData = CallLib.GetPlayerData()
 	for i,v in next, Players:GetPlayers() do
 		local err, Data = pcall(function()
