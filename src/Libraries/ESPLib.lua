@@ -6,7 +6,7 @@ local Util = require('Util')
 local RequiredBodyParts = {
 	'Head',
 	'UpperTorso',
-	'LoawerTorso',
+	'LowerTorso',
 	'HumanoidRootPart',
 	'LeftFoot',
 	'LeftHand',
