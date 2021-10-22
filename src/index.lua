@@ -60,7 +60,7 @@ game:GetService('RunService').Heartbeat:Connect(function()
 			if (Data.Dead == false) then
 					for k,c in next, RoleColors do
 					if (Data.Role == k) then
-						ESP:Color(Players[v.Name], c)
+						ESP:Color(v, c)
 					end
 				end
 			else
