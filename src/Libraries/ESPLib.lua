@@ -61,7 +61,7 @@ function ESP:Build(Player, Color)
 		end
 		local BGui = Util.QuickBuild('BillboardGui', ESPHolder, {
 			AlwaysOnTop = true,
-			Size = UDim2.new(2, 0, 1, 0),
+			Size = UDim2.new(10, 0, 1, 0),
 			StudsOffset = Vector3.new(0, 2, 0),
 			Adornee = Character:WaitForChild('Head'),
 		})
@@ -74,7 +74,7 @@ function ESP:Build(Player, Color)
 				Font = Enum.Font.Code,
 				TextColor3 = Color,
 				Text = string.format('%s (@%s)', Player.DisplayName, Player.Name),
-				TextScaled = true,
+				--TextScaled = true,
 				TextStrokeTransparency = 0,
 			})
 		)
