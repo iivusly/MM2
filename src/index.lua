@@ -39,7 +39,7 @@ Players.PlayerAdded:Connect(function(Player)
 	Build(Player)
 end)
 
-UIS.InputBegan:Connect(function(Input)
+--[[UIS.InputBegan:Connect(function(Input)
 	if (Input.KeyCode == Enum.KeyCode.E and LocalPlayerRole == 'Sheriff') then
 		for i,v in next, PlayerData do
 			if (v.Role == 'Murderer') then
@@ -47,7 +47,7 @@ UIS.InputBegan:Connect(function(Input)
 			end
 		end
 	end
-end)
+end)]]
 
 game:GetService('RunService').Heartbeat:Connect(function()
 	PlayerData = CallLib.GetPlayerData()
