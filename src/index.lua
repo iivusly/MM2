@@ -40,10 +40,12 @@ Players.PlayerAdded:Connect(function(Player)
 end)
 
 UIS.InputBegan:Connect(function(Input)
-	if (Input.KeyCode == Enum.KeyCode.E and LocalPlayerRole == 'Sheriff') then
-		for i,v in next, PlayerData do
-			if (v.Role == 'Murderer') then
-				CallLib.Shoot(Players[i].Character.PrimaryPart.Position)
+	if (Input.KeyCode == Enum.KeyCode.Q) then
+		if (LocalPlayerRole == 'Sheriff') then
+			for i,v in next, PlayerData do
+				if (v.Role == 'Murderer') then
+					CallLib.Shoot(Players[i].Character.PrimaryPart.Position)
+				end
 			end
 		end
 	end
