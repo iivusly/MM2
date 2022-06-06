@@ -43,6 +43,7 @@ function ESP:Color(Player, Color)
 				v.TextColor3 = Color
 			else
 				v.FillColor = Color
+				v.OutlineColor = Color
 			end
 		end
 	end
@@ -83,7 +84,7 @@ function ESP:Build(Player, Color)
 			self.Items[Player],
 			Util.QuickBuild('Highlight', Character, {
 				FillColor = Color,
-				FillTransparency = 0.5,
+				FillTransparency = 0.25,
 				OutlineColor = Color3.fromRGB(0, 209, 255)
 			})
 		)
