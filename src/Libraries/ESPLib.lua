@@ -79,21 +79,14 @@ function ESP:Build(Player, Color)
 			})
 		)
 		
-		for _,v in next, Character:GetDescendants() do
-			if (v:IsA('BasePart')) then
-				table.insert(
-					self.Items[Player], 
-					Util.QuickBuild('BoxHandleAdornment', ESPHolder, {
-						Color3 = Color,
-						Size = v.Size,
-						AlwaysOnTop = true,
-						Adornee = v,
-						Transparency = 0.5,
-						ZIndex = 1,
-					})
-				)
-			end
-		end
+		table.insert(
+			self.Items[Player],
+			Util.QuickBuild('Highlight', Character, {
+				FillColor = Color,
+				FillTransparency = 0.5,
+				OutlineColor = Color3.fromRGB(0, 209, 255)
+			})
+		)
 
 		local function Died()
 			for _,v in next, self.Items[Player] do
