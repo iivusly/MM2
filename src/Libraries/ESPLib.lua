@@ -84,7 +84,7 @@ function ESP:Build(Player, Color)
 			Util.QuickBuild('Highlight', Character, {
 				FillColor = Color,
 				FillTransparency = 0.5,
-				OutlineColor = Color3.fromRGB(0, 209, 255)
+				OutlineColor = Color
 			})
 		)
 
