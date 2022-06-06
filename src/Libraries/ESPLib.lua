@@ -42,7 +42,7 @@ function ESP:Color(Player, Color)
 			if (v:IsA('TextLabel')) then
 				v.TextColor3 = Color
 			else
-				v.Color3 = Color
+				v.FillColor = Color
 			end
 		end
 	end
@@ -84,7 +84,7 @@ function ESP:Build(Player, Color)
 			Util.QuickBuild('Highlight', Character, {
 				FillColor = Color,
 				FillTransparency = 0.5,
-				OutlineColor = Color
+				OutlineColor = Color3.fromRGB(0, 209, 255)
 			})
 		)
 
