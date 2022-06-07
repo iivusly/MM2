@@ -80,13 +80,15 @@ function ESP:Build(Player, Color)
 			})
 		)
 		
+		local Highlight = Util.QuickBuild('Highlight', Character, {
+			FillColor = Color,
+			FillTransparency = 0.25,
+			OutlineColor = Color3.fromRGB(0, 209, 255)
+		})
+		
 		table.insert(
 			self.Items[Player],
-			Util.QuickBuild('Highlight', Character, {
-				FillColor = Color,
-				FillTransparency = 0.25,
-				OutlineColor = Color3.fromRGB(0, 209, 255)
-			})
+			Highlight
 		)
 
 		local function Died()
@@ -96,6 +98,10 @@ function ESP:Build(Player, Color)
 
 			self.Items[Player] = {}
 		end
+		
+		Character:WaitForChild("Head"):GetPropertyChangedSignal("Transparency"):Connect(function()
+			Highlight.FillTransparency = Character["Head"].Transparency
+		end)
 
 		Character.Parent.DescendantRemoving:Connect(function(Decsendant)
 			if (Decsendant == Character) then
