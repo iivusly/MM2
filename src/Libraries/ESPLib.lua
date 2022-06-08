@@ -57,9 +57,6 @@ function ESP:Build(Player, Color)
 	self.Items[Player] = {}
 	
 	local function Build(Character)
-		for _,v in next, RequiredBodyParts do
-			local Found = Character:WaitForChild(v)
-		end
 		local BGui = Util.QuickBuild('BillboardGui', ESPHolder, {
 			AlwaysOnTop = true,
 			Size = UDim2.new(10, 0, 1, 0),
@@ -101,6 +98,7 @@ function ESP:Build(Player, Color)
 		
 		Character:WaitForChild("Head"):GetPropertyChangedSignal("Transparency"):Connect(function()
 			Highlight.FillTransparency = Character["Head"].Transparency
+			Highlight.OutlineTransparency = 0
 		end)
 
 		Character.Parent.DescendantRemoving:Connect(function(Decsendant)
